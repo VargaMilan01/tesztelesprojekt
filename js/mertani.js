@@ -27,13 +27,10 @@ function mt_szamolas() {
 }
 
 function kk_szamolas() {
-    let Tn = document.getElementById("kamatos_kamat_Tn").value*1;
     let T0 = document.getElementById("kamatos_kamat_T0").value*1;
     let p = document.getElementById("kamatos_kamat_p").value*1;
     let n = document.getElementById("kamatos_kamat_n").value*1;
-    document.getElementById("kamatos_kamat_Tn_kiir").innerHTML = Math.round(kamatos_kamat_Tn(T0, p, n));
-    document.getElementById("kamatos_kamat_T0_kiir").innerHTML = Math.round(kamatos_kamat_T0(Tn, p, n));
-    document.getElementById("kamatos_kamat_n_kiir").innerHTML = Math.round(kamatos_kamat_n(Tn, T0, p));
+    document.getElementById("kamatos_kamat_Tn_kiir").innerHTML = Math.round(kamatos_kamat_Tn(T0, p, n)) + " Ft";
 }
 
 document.getElementById("mt_szamol").addEventListener("click", mt_szamolas);
