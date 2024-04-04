@@ -17,7 +17,7 @@ function szt_atlag(a1, d, n) {
 function szt_szoras(a1, d, n) {
     let szoras = 0;
     const atlag = szt_atlag(a1, d, n);
-    for (let i=0; i<n; i++) {
+    for (let i=1; i<(n+1); i++) {
         szoras += (szt_an(a1, d, i)-atlag)**2;
     }
     return Math.sqrt(szoras/n);
@@ -33,4 +33,10 @@ function szt_szamolas() {
     $("szt_szoras").innerHTML = szt_szoras(a1, d, n);
 }
 
+// Eseménykezelést ki kell kommentezni Jest teszteléskor
 $("szt_szamol").addEventListener("click", szt_szamolas);
+
+module.exports.szt_an = szt_an;
+module.exports.szt_Sn = szt_Sn;
+module.exports.szt_atlag = szt_atlag;
+module.exports.szt_szoras = szt_szoras;

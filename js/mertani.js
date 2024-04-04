@@ -38,6 +38,10 @@ function kk_szamolas() {
     if (n == "" || n < 0) n = 1;
     document.getElementById("kamatos_kamat_Tn_kiir").innerHTML = Math.round(kamatos_kamat_Tn(T0, p, n)) + " Ft";
 }
-
+// Eseménykezelést ki kell kommentezni Jest teszteléskor
 document.getElementById("mt_szamol").addEventListener("click", mt_szamolas);
 document.getElementById("kk_szamol").addEventListener("click", kk_szamolas);
+
+module.exports.mt_an = mt_an;
+module.exports.mt_Sn = mt_Sn;
+module.exports.kamatos_kamat_Tn = kamatos_kamat_Tn;
