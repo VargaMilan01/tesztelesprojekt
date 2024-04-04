@@ -33,9 +33,9 @@ function kk_szamolas() {
     let T0 = document.getElementById("kamatos_kamat_T0").value*1;
     let p = document.getElementById("kamatos_kamat_p").value*1;
     let n = document.getElementById("kamatos_kamat_n").value*1;
-    if (T0 == "") T0 = 1;
-    if (p == "") p = 1;
-    if (n == "") n = 1;
+    if (T0 == "" || T0 < 0) T0 = 1;
+    if (p == "" || p < 0) p = 1;
+    if (n == "" || n < 0) n = 1;
     document.getElementById("kamatos_kamat_Tn_kiir").innerHTML = Math.round(kamatos_kamat_Tn(T0, p, n)) + " Ft";
 }
 
