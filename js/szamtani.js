@@ -24,9 +24,9 @@ function szt_szoras(a1, d, n) {
 }
 
 function szt_szamolas() {
-    let a1 = $("a1").value*1;
-    let d = $("d").value*1;
-    let n = $("n").value*1;
+    let a1 = $("szt_a1").value*1;
+    let d = $("szt_d").value*1;
+    let n = $("szt_n").value*1;
     $("szt_an").innerHTML = szt_an(a1, d, n);
     $("szt_Sn").innerHTML = szt_Sn(a1, d, n);
     $("szt_atlag").innerHTML = szt_atlag(a1, d, n);
