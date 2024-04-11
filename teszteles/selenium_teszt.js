@@ -46,9 +46,9 @@ async function example(){
     driver.executeScript("arguments[0].click();", element2)
     //await driver.findElement(By.id("mt_szamol")).click();
     await driver.manage().setTimeouts({ implicit: 3000 });
-    var answer = driver.findElement(By.id("mt_an")).getText();
+    driver.findElement(By.id("mt_an")).getText().then(function(Thetest) { assert.strictEqual(Thetest, "512")});
     await driver.manage().setTimeouts({ implicit: 3000 });
-    assert.strictEqual(answer, "512");
+   
 
   } finally {
     
