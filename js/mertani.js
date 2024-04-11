@@ -10,14 +10,6 @@ function kamatos_kamat_Tn(T0, p, n) {
     return T0*(1+p/100)**n;
 }
 
-function kamatos_kamat_T0(Tn, p, n) {
-    return Tn/(1+p/100)**n;
-}
-
-function kamatos_kamat_n(Tn, T0, p) {
-    return Math.log(Tn/T0)/Math.log(1+p/100);
-}
-
 function mt_szamolas() {
     let a1 = document.getElementById("mt_a1").value*1;
     let q = document.getElementById("mt_q").value*1;
@@ -38,6 +30,7 @@ function kk_szamolas() {
     if (n == "" || n < 0) n = 1;
     document.getElementById("kamatos_kamat_Tn_kiir").innerHTML = Math.round(kamatos_kamat_Tn(T0, p, n)) + " Ft";
 }
+
 // Eseménykezelést ki kell kommentezni Jest teszteléskor
 document.getElementById("mt_szamol").addEventListener("click", mt_szamolas);
 document.getElementById("kk_szamol").addEventListener("click", kk_szamolas);
