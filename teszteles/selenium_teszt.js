@@ -1,7 +1,7 @@
 const {By,Key,Builder} = require("selenium-webdriver");
 require("chromedriver");
 const assert = require("assert");
-const { Console } = require("console");
+
 
 
 async function example(){
@@ -12,7 +12,7 @@ async function example(){
   try{
     
    await driver.get("file:///c%3A/Munka/12c-varga/tesztelesprojekt/index.html"); //Az elérési útvonalat környezettől függően változtatni kell
-   await driver.manage().setTimeouts({ implicit: 3000 });
+   await driver.manage().setTimeouts({ implicit: 5000 });
    var title = await driver.getTitle();
    console.log('Az oldal címe:', title, "ennek hossza: ", title.length);
    assert.strictEqual(title, "Számtani, mértani sorozatok");
@@ -53,31 +53,45 @@ async function example(){
           console.log(await e.getText());
      
        }
+      await driver.sleep(2000);
+      let prevb = await driver.findElement(By.className('carousel-control-prev'));
+      console.log('Carousel vissza gombjának megnyomása');
+      await prevb.click();
+      await driver.sleep(2000);
+      let nextb = await driver.findElement(By.className('carousel-control-next'));
+      console.log('Carousel előre gombjának megnyomása');
+      await nextb.click();
+      await driver.sleep(2000);
+
+      let szamtanisz = await driver.findElement(By.id('szamtanisz'));
+      console.log('Navbar számtani sorozathoz vezető linkjének megynomása');
+      await szamtanisz.click();
+      await driver.sleep(2000);
 
     
-    let nav = await driver.findElement(By.className('navbar'));
-    driver.executeScript("return arguments[0].parentNode;", nav)
+    //let nav = await driver.findElement(By.className('navbar'));
+    //driver.executeScript("return arguments[0].parentNode;", nav)
     
-    await driver.manage().setTimeouts({ implicit: 4000 });
+
 
     //driver.findElement(By.css("body")).sendKeys(Key.CONTROL, Key.END);
-    var element = await driver.findElement(By.name("mertans"));
-    await driver.executeScript("arguments[0].scrollIntoView();",element);
-    await driver.executeScript("arguments[0].click();", element)
+    //var element = await driver.findElement(By.name("mertans"));
+    //await driver.executeScript("arguments[0].scrollIntoView();",element);
+    //await driver.executeScript("arguments[0].click();", element)
     //await driver.findElement(By.name("mertans")).click();
 
-    await driver.manage().setTimeouts({ implicit: 3000 });
-    await driver.executeScript("document.getElementById('mt_a1').setAttribute('value', '1')");
-    await driver.executeScript("document.getElementById('mt_q').setAttribute('value', '2')");
-    await driver.executeScript("document.getElementById('mt_n').setAttribute('value', '10')");
-    var element2 = await driver.findElement(By.id("mt_szamol"));
-    await driver.executeScript("arguments[0].scrollIntoView();",element2);
-    await driver.executeScript("arguments[0].click();", element2)
+
+    //await driver.executeScript("document.getElementById('mt_a1').setAttribute('value', '1')");
+    //await driver.executeScript("document.getElementById('mt_q').setAttribute('value', '2')");
+    //await driver.executeScript("document.getElementById('mt_n').setAttribute('value', '10')");
+    //var element2 = await driver.findElement(By.id("mt_szamol"));
+    //await driver.executeScript("arguments[0].scrollIntoView();",element2);
+    //await driver.executeScript("arguments[0].click();", element2)
     //await driver.findElement(By.id("mt_szamol")).click();
-    await driver.manage().setTimeouts({ implicit: 3000 });
-    var text = await driver.executeScript("return document.getElementById('mt_an').innerHTML").toString();
-    console.log(text);
-    await driver.manage().setTimeouts({ implicit: 3000 });
+
+    //var text = await driver.executeScript("return document.getElementById('mt_an').innerHTML").toString();
+    //console.log(text);
+
    
 
   } finally {
